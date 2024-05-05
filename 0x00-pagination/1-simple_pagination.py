@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+"""Defines class Server that paginates a database of popular baby names.
+"""
 import csv
 import math
 from typing import List
@@ -46,7 +49,7 @@ class Server:
         dataset = self.dataset()
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
-        
+
         try:
             indices = index_range(page, page_size)
             return dataset[indices[0]: indices[1]]
