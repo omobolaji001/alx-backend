@@ -23,7 +23,7 @@ class FIFOCache(BaseCaching):
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             pop_key = self.order.popleft()
             del self.cache_data[pop_key]
-            print(f"DISCARDED: {pop_key}")
+            print(f"DISCARD: {pop_key}")
 
     def get(self, key):
         """Retrieves the item associated with key"""
