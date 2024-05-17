@@ -4,10 +4,6 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-app = Flask(__name__)
-babel = Babel(app)
-
-
 class Config:
     """Represents configuration"""
     LANGUAGES = ["en", "fr"]
@@ -15,13 +11,15 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
+app = Flask(__name__)
 app.config.from_object(Config)
+babel = Babel(app)
 
 
 @app.route('/')
 def home():
     """The Home page"""
-    return render_template("2-index.html")
+    return render_template("3-index.html")
 
 
 @babel.localeselector
@@ -31,4 +29,4 @@ def get_local():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
