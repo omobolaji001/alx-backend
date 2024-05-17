@@ -10,8 +10,8 @@ babel = Babel(app)
 class Config:
     """Represents configuration"""
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCAALE = 'en'
-    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_DEFAULT_LOCAALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app.config.from_object(Config)
@@ -20,7 +20,7 @@ app.config.from_object(Config)
 @app.route('/')
 def home():
     """The Home page"""
-    return render_template("0-index.html")
+    return render_template("1-index.html")
 
 
 if __name__ == "__main__":
