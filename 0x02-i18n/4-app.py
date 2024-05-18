@@ -25,7 +25,7 @@ def home():
 @babel.localeselector
 def get_local():
     """Gets locale from request"""
-    return request.args.get('lang', default='en')
+    return request.args.get('locale', default='en')
 
 
 if __name__ == "__main__":
