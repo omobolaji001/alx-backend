@@ -54,16 +54,16 @@ def home():
 def get_local():
     """Gets locale"""
     url_loc = request.args.get('locale', default='en')
-    user_loc = g.user.get('locale')
     request_loc = request.headers.get('locale')
 
     if url_loc and url_loc in app.config['LANGUAGES']:
         return url_loc
-    if g.user and user_loc in app.config['LANGUAGES']:
-        return user_loc
+    if g.user:
+        if g.user.get('locale') in app.config['LANGUAGES']:
+            return user_loc
     if request_loc and request_loc in app.config['LANGUAGES']:
         return request_loc
-    return app.config['BABEL_DEFAULT_LOCALE'])
+    return app.config['BABEL_DEFAULT_LOCALE']
 
 
 if __name__ == "__main__":
