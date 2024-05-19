@@ -51,19 +51,22 @@ def home():
 
 
 @babel.localeselector
-def get_local():
+def get_locale():
     """Gets locale"""
-    url_loc = request.args.get('locale', default='en')
-    request_loc = request.headers.get('locale')
+    locale = request.args.get('locale')
+    if locale and locale in app.config['LANGUAGES']:
+        return locale
 
-    if url_loc and url_loc in app.config['LANGUAGES']:
-        return url_loc
     if g.user:
-        if g.user.get('locale') in app.config['LANGUAGES']:
-            return user_loc
-    if request_loc and request_loc in app.config['LANGUAGES']:
-        return request_loc
-    return app.config['BABEL_DEFAULT_LOCALE']
+        locale = g.user.get('locale')
+        if locale in app.config['LANGUAGES']:
+            return locale
+
+    locale = request.headers.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
+
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 if __name__ == "__main__":
