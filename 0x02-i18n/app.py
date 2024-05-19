@@ -45,10 +45,9 @@ def before_request():
     user = get_user()
     g.user = user
 
-    now = pytz.utc.localize(datetime.utcnow())
-    time = now.astimezone(pytz.timezone(get_timezone()))
-    locale.setlocale(locale.LC_TIME, (get_locale(), 'UTF-8'))
-    frmt = "%b %d %Y %I:%M:%S %p"
+    time_now = pytz.utc.localize(datetime.utcnow())
+    time = time_now.astimezone(pytz.timezone(get_timezone()))
+    frmt = "%b %d, %Y %I:%M:%S %p"
     g.time = time.strftime(frmt)
 
 
