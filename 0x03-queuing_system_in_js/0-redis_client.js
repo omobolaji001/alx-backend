@@ -1,6 +1,6 @@
 import { createClient } from 'redis';
 
-export default function connectNodeRedis() {
+function connectNodeRedis() {
   const client = createClient();
 
   client.on('connect', () => {
