@@ -5,7 +5,7 @@ import createPushNotificationsJobs from './8-job.js';
 
 const queue = createQueue();
 
-describe('Test createPushNotificationsJobs function', function() {
+describe('createPushNotificationsJobs', function() {
   before(function () {
     queue.testMode.enter();
   });

@@ -60,9 +60,10 @@ app.get('/process', (req, res) => {
     if (seat === 0) {
       reservationEnabled = false;
       done(Error('Not enough seats available'));
+    } else {
+      reserveSeat(seat -1);
+      done();
     }
-    reserveSeat(seat -1);
-    done();
   });
 });
 
